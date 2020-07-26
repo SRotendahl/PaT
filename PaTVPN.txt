@@ -1,0 +1,15 @@
+VPN type: L2TP via IPSec
+Server address: vpn-diku.science.ku.dk
+Account: <KU id>
+Password: <your KU password>
+Shared secret: Bohr2013
+Send all traffic through VPN (selection in the advanced settings)
+
+
+In Android terminology
+
+VPN type: L2TP/IPSec PSK
+Server address: vpn-diku.science.ku.dk
+Username: <KU id>
+Password: <your KU password>
+IPSec preshared key: Bohr2013 

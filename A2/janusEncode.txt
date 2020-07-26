@@ -1,0 +1,29 @@
+i j text[10] code[20]
+
+procedure encode
+  from i = 0 && j = 0 loop
+    code[j] <=> text[i]
+    from code[j+1] = 0
+    do code[j+1] += 1
+       i += 1
+    loop text[i] -= code[j]
+    until code[j] != text[i]
+    j += 2
+  until text[i] = 0
+  from code[j] = 0 do
+    j -= 2
+    i -= code[j+1]
+  until i = 0
+
+procedure main
+    text[0]+=3
+    text[1]+=3
+    text[2]+=7
+    text[3]+=7
+    text[4]+=7
+    text[5]+=0
+    text[6]+=5
+    text[7]+=5
+    text[8]+=5
+    text[9]+=0
+    call encode

@@ -1,0 +1,27 @@
+i j text[10] code[7]
+
+procedure decode
+    from i = 0 do
+        i += code[j + 1]
+        j += 2
+    until code[j] = 0
+    from text[i] = 0 loop
+        j -= 2
+        from code[j] != text[i] do
+            i -= 1
+            code[j + 1] -= 1
+        loop
+            text[i] += code[j]
+        until code[j + 1] = 0
+        code[j] <=> text[i]
+    until i = 0 && j = 0
+
+procedure main
+    code[0]+=3
+    code[1]+=2
+    code[2]+=0
+    code[3]+=4
+    code[4]+=5
+    code[5]+=3
+    code[6]+=0
+    call decode

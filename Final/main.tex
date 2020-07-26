@@ -1,0 +1,44 @@
+\input{preamble}
+\begin{document}
+  \coverpage{Reconstruction of an Algorithm for Semi-Inversion}
+
+\section{Introduction}
+
+
+\newpage 
+
+\printbibliography
+
+\newpage
+\appendix
+\section{}
+\subsection{Approved abstract}
+In the final assignment I am doing a topic suggested under the section \textit{Foundations of Inversion}. The topic is \textit{Reconstruction of an Algorithm for Semi-Inversion}. The papers \cite{Guarded, implementation} describes an algorithm/approach for for semi-inversion, however it does not define the algorithm, so the aim of this assignment is to reconstruct the main parts of the algorithm. The language used in \cite{Guarded, implementation} is a first-order functional language, and the same author has also put forth an algorithm for semi-inversion (specifically the resequentialisation step of his semi-inversion) \cite{PEPM-2008-Mogensen} for a higher-order language, which will be used as inspiration when defining the main parts of the algorithm for the first-order language.
+
+\textit{"The programming language that we use in this paper is a first-order functional language where each function is given as a set of equations using pattern-matching and guards"}\cite{Guarded}, with this very brief description of the language, we can look at the steps in the described algorithm (the steps here below has been paraphrased from \cite{Guarded});
+\begin{description}
+\item{Desequentialisation:} Translate each equation to an unordered set of relations between tuples of variables.
+\item{Refining Operators:} You can refine the operators used to make semi-inversion possible more often, for example if \textit{x} is sure to be even, then the relation $z = \texttt{div }2$ can be refined to $x=2\times y$ where any of the two variables can define the others.
+\item{Resequentialisation:} In order to semi-invers we need to determine which variables can be computed from which others. We do this by resequentialisation, which orders relations by data dependency. 
+\item{Translate back:} We then need to translate the equations from relational from back into the \textit{normal} syntax.
+\item{Join equations:} The language demands that the equations of a function must have disjoint domains through their patterns and guards. There is no guarantee that this will be true of the semi-inverted equations, even if it was true for the original equations.
+\item{Make Semi-inverses Valid:} We can add extra arguments to make a semi-inverse valid.
+\end{description}
+I want to reconstruct the main parts of the algorithm, which in my view is the \textbf{desequentialisation} and \textbf{resequentialisation}, so I will be aiming to define an algorithm for each of the two. I will of course like to find an alogrithm for each step, defining the entire procedure, however this is not the goal of the assignment, and I will only be looking to the other steps besides the two I mentioned, if time allows it.
+
+\subsection{Definitions}
+Here are some definitions that are made in the papers.
+\paragraph{Semi-inversion} In general, semi-inversion means taking a program and producing a new program that as input takes part of the input and part of the output of the original program and as output produces the rest of the input and output of original program \cite{Guarded}.
+
+\paragraph{Partial function} A partial function $g$ is the inverse of an injective partial function $f$ if for all $x$ in $f$’s domain we have that $f(x) = y \to g(y) = x$. $g$ is only defined on the range of $f$ \cite{Guarded}.
+
+\paragraph{Extraction} An extraction for a domain $\alpha$ is a total and surjective function from $\alpha$ to
+a domain $\beta$ \cite{Guarded}.
+
+\paragraph{Division (of a domain)} We call a pair of extractions $p:\alpha \to \beta$ and $q: \alpha \to \gamma$ a division of $\alpha$ if the function $(p,q):\alpha\to\beta\times\gamma$ defined by $(p,q) (x) = (p(x), q(x))$ is bijective \cite{Guarded}.
+
+
+
+
+\end{document}
+

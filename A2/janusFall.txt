@@ -1,0 +1,33 @@
+t v h tend
+
+procedure fall
+    from t = 0 do
+        v+=10
+        h-=v
+        h+=5
+        t+=1
+        tend-=1
+    until tend = 0
+    
+procedure main
+    h+=176
+    tend+=3
+    call fall
+
+
+
+t v h tend
+
+procedure invfall
+    from tend = 0 do
+        tend += 1
+        t -= 1
+        h -= 5
+        h += v
+        v -= 10
+    until t = 0
+
+procedure main
+    v+=30
+    t+=3
+    call invfall
